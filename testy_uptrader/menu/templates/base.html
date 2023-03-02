@@ -7,6 +7,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% endblock meta %}
 
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/menu.css' %}">
+    
+
     {% block loading %}
     {% endblock loading %}
 
@@ -15,5 +19,7 @@
 <body>
     {% block content %}
     {% endblock content %}
+
+    <script src="{% static 'js/menu.js' %}"></script>
 </body>
 </html>

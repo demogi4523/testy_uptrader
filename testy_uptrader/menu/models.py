@@ -1,7 +1,7 @@
 from django.db import models
 
 from menu.validators import validate_json_content
-
+from menu.utils import iter_to_html
 
 class Menu(models.Model):
     name = models.CharField(
@@ -15,17 +15,7 @@ class Menu(models.Model):
 
     def __str__(self) -> str:
         return self.name
-    
+
     def to_html(self):
-        html = """
-         <ul id="{}">
-            <li><a href="{}"><span class="caret">Beverages</span></a>
-                <ul class="nested">
-                    <li>Water</li>
-                    <li>Coffee</li>
-                    <li><span class="caret">Tea</span></li>
-                </ul>
-            </li>
-        </ul> 
-        """.format(self.name, '#')
+        html = iter_to_html(self.content, self.name)
         return html
